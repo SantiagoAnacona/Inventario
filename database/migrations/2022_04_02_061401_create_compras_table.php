@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
+            $table->string('cantidad');
+            $table->unsignedBigInteger('id_producto');
+            $table->foreign('id_producto')->references('id')->on('productos')->onUpdate('cascade')->onDelete('cascade');
+            $table->date('fecha');
+            $table->time('hora');
+            $table->integer('valor_total');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
